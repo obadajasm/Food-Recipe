@@ -44,12 +44,22 @@ class _RandomMealWidgetState extends State<RandomMealWidget> {
     }
 
     return randomMeal == null
-        ? Center(
-            child: Loading(
-            indicator: BallPulseIndicator(),
-            size: 100.0,
-            color: Colors.black,
-          ))
+        ? Container(
+            height: 400,
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 200,
+                ),
+                Center(
+                    child: Loading(
+                  indicator: BallPulseIndicator(),
+                  size: 100.0,
+                  color: Colors.black,
+                )),
+              ],
+            ),
+          )
         : OneMealWidget(
             randomMeal: randomMeal,
             instructions: instructions,

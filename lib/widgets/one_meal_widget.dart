@@ -75,7 +75,7 @@ class OneMealWidget extends StatelessWidget {
               height: 20,
             ),
             FadeAnimation(
-              10,
+              4,
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
