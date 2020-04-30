@@ -4,12 +4,7 @@ Flutter app with Provider .
 
 Explore new world of taste and food with very powerfull and simle UI
 
-<p>
-   Download Release Vesion  <p></p><p></p>
-   <a href="https://github.com/obadajasm/Food-Recipe/blob/master/release/app-release.apk?raw=true">
-<img width="120" height="75"src="https://raw.githubusercontent.com/obadajasm/Food-Recipe/master/screenshots/download.png"/>
-</a>
-</p>
+
 
 <table >
   <tr>
