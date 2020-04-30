@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/provider/food.dart';
 import 'package:food_app/screens/one_meal.dart';
@@ -42,19 +43,30 @@ class _CategotState extends State<Categot> {
                 },
                 child: Container(
                   padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.symmetric(horizontal: 5),
                   width: 500,
-                  height: 500,
+                  height: 400,
                   child: Column(
                     children: <Widget>[
                       ClipRRect(
                         borderRadius: BorderRadius.circular(64),
-                        child: FadeInImage(
+                        // child: FadeInImage(
+                        //   width: 300,
+                        //   height: 300,
+                        //   placeholder: AssetImage('assets/images/loading.gif'),
+                        //   image: NetworkImage(
+                        //       catData['meals'][index]['strMealThumb']),
+                        // ),
+                        child: CachedNetworkImage(
+                          imageUrl: catData['meals'][index]['strMealThumb'],
                           width: 300,
                           height: 300,
-                          placeholder: AssetImage('assets/images/loading.gif'),
-                          image: NetworkImage(
-                              catData['meals'][index]['strMealThumb']),
+                          placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator(
+                            backgroundColor: Colors.black,
+                          )),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
                         ),
                       ),
                       SizedBox(

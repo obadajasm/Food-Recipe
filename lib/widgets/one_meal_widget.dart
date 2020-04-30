@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/animation/fadeanimation.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -63,11 +64,21 @@ class OneMealWidget extends StatelessWidget {
             Center(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(64),
-                child: FadeInImage(
-                  placeholder: AssetImage('assets/images/loading.gif'),
-                  image: NetworkImage("${randomMeal[0]['strMealThumb']}"),
+                // child: FadeInImage(
+                //   placeholder: AssetImage('assets/images/loading.gif'),
+                //   image: NetworkImage("${randomMeal[0]['strMealThumb']}"),
+                //   width: 300,
+                //   height: 300,
+                // ),
+                child: CachedNetworkImage(
+                  imageUrl: randomMeal[0]['strMealThumb'],
                   width: 300,
                   height: 300,
+                  placeholder: (context, url) => Center(
+                      child: CircularProgressIndicator(
+                    backgroundColor: Colors.black,
+                  )),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
             ),

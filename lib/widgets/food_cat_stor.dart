@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/provider/food.dart';
@@ -60,16 +61,27 @@ class _FoodCatStoryState extends State<FoodCatStory> {
                             child: Container(
                               width: 200,
                               height: 120,
-                              child: FadeInImage(
-                                placeholder:
-                                    AssetImage('assets/images/loading.gif'),
-                                width: 200,
-                                height: 120,
-                                fit: BoxFit.contain,
-                                image: NetworkImage(
-                                  categorieList['categories'][index]
-                                      ['strCategoryThumb'],
-                                ),
+                              // child: FadeInImage(
+                              //   placeholder:
+                              //       AssetImage('assets/images/loading.gif'),
+                              //   width: 200,
+                              //   height: 120,
+                              //   fit: BoxFit.contain,
+                              //   image: NetworkImage(
+                              //     categorieList['categories'][index]
+                              //         ['strCategoryThumb'],
+                              //   ),
+                              // ),
+                              //child: Cached*Ima,
+                              child: CachedNetworkImage(
+                                imageUrl: categorieList['categories'][index]
+                                    ['strCategoryThumb'],
+                                placeholder: (context, url) => Center(
+                                    child: CircularProgressIndicator(
+                                  backgroundColor: Colors.black,
+                                )),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error),
                               ),
                             ),
                           ),
